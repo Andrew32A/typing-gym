@@ -1,5 +1,5 @@
 // import api
-const random_quote_api_url = 'http://api.quotable.io/random'
+const random_quote_api_url = 'https://api.quotable.io/random'
 const quote_display = document.getElementById("quoteDisplay")
 const quote_input = document.getElementById("quoteInput")
 
