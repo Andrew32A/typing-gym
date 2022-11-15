@@ -6,7 +6,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column; }
+  flex-direction: column; 
+}
 
 .welcome {
   height: 100vh;
@@ -18,13 +19,15 @@ body {
   justify-content: center;
   flex-direction: column;
   letter-spacing: 2px;
-  color: #FFF; }
+  color: #FFF; 
+}
 
 .heading {
   font-family: "Comic Sans";
   font-size: 50px;
   margin-bottom: 0px;
-  opacity: 0; }
+  opacity: 0; 
+}
 
 .sub-heading {
   font-size: 16px;
@@ -32,21 +35,24 @@ body {
   letter-spacing: 2px;
   font-family: "Avenir Next";
   margin-bottom: 40px;
-  opacity: 0; }
+  opacity: 0; 
+}
 
 .loader-wrapper {
   height: 2px;
   width: 150px;
   background: #ededed;
   border-radius: 100px;
-  opacity: 0; }
+  opacity: 0; 
+}
 
 .loader {
   height: 2px;
   width: 150px;
   background: #FFF;
   border-radius: 100px;
-  background: #585858; }
+  background: #585858; 
+}
 
 p {
   max-width: 500px;
@@ -54,4 +60,5 @@ p {
   line-height: 25px;
   text-align: justify;
   opacity: 0;
-  color: #585858; }
+  color: #585858; 
+}
