@@ -3,26 +3,52 @@ const random_quote_api_url = 'https://api.quotable.io/random'
 const quote_display = document.getElementById("quoteDisplay")
 const quote_input = document.getElementById("quoteInput")
 
-function get_quote() {
+// fetches quote from api
+function getQuote() {
     return fetch(random_quote_api_url)
         .then(response => response.json())
         .then(data => data.content)
 }
 
-async function get_next_quote(){
-    const quote = await get_quote()
-    quote_display.innerText = quote
-    quote.split("")
-    // quote_input.value = null
+// recieves quote from getQuote, splits it into an array, and displays each in it's own span tag
+async function getNextQuote() {
+    const quote = await getQuote()
+    quote_display.innerText = ""
+    quote.split("").forEach(character => {
+        const characterSpan = document.createElement("span")
+        characterSpan.innerText = character
+        quote_display.appendChild(characterSpan)
+    });
+    quote_input.value = null
     console.log(quote)
 }
-
-get_next_quote()
 
 // get user input
 document.addEventListener("keydown", (e) => {
     let name = e.key;
     let code = e.code;
+    let counter = 0;
+
+    // change color to green for correct
+    if (name == character[counter]) {
+        counter += 1
+        let correctLetter = document.createElement("span")
+        correctLetter.innerText = name
+        quote_display.appendChild(correctLetter)
+    }
+
+    // change color to red for incorrect
+    else if (name != character[counter]) {
+        counter += 1
+        let incorrectLetter = document.createElement("span")
+        incorrectLetter.innerText = name
+        quote_display.appendChild(incorrectLetter)
+    }
+
+    // if return is pressed, then undo color change
+    else if (name == "Backspace") {
+        counter -= 1
+    }
 
     console.log(`key pressed: ${name}, key code: ${code}`);
 })
@@ -31,3 +57,7 @@ document.addEventListener("keydown", (e) => {
 // check user input against api string | return "correct" or "incorrect" comparing user's input
 
 // add WPM counter, add a value that goes up by one evert time the correct key is pressed and divide the total by 60
+
+
+
+getNextQuote()
