@@ -54,25 +54,27 @@ document.addEventListener("keydown", (e) => {
         counter += 1
     }
 
+    // if return is pressed, then undo color change
+    else if (keyStroke === "Backspace") {
+        counter -= 1
+        
+        // removes "incorrect" and "correct" class from span in index when user inputs "Backspace"
+        characterSpanArray[counter].classList.remove("correct");    
+        characterSpanArray[counter].classList.remove("incorrect");   
+    }
+
     // change color to red for incorrect
     else if (keyStroke != quoteSplit[counter]) {
-        let incorrectLetter = document.createElement("span")
-        incorrectLetter.innerText = keyStroke
-        quote_display.appendChild(incorrectLetter)
+        // let incorrectLetter = document.createElement("span")
+        // incorrectLetter.innerText = keyStroke
+        // quote_display.appendChild(incorrectLetter)
         
         // adds "incorrect" class to span in index with incorrect key press
         characterSpanArray[counter].classList.add("incorrect");    
         counter += 1
     }
 
-    // if return is pressed, then undo color change
-    else if (keyStroke === "Backspace") {
-        counter -= 1
-        
-        // removes "incorrect" and "correct" class from span in index when user inputs "Backspace"
-        characterSpanArray.classList.remove("correct");    
-        characterSpanArray.classList.remove("incorrect");   
-    }
+    
 
     console.log(`key pressed: ${keyStroke}, key code: ${code}`);
     console.log(counter)
