@@ -1,3 +1,19 @@
+/* color palatte
+
+    --bg-color: #1b2028;
+    --main-color: #23a9d5;
+    --caret-color: #4b5975;
+    --sub-color: #4b5975;
+    --sub-alt-color: #151a21;
+    --text-color: #ccccb5;
+    --error-color: #b81b2c;
+    --error-extra-color: #84131f;
+    --colorful-error-color: #b81b2c;
+    --colorful-error-extra-color: #84131f;
+
+
+*/
+
 body {
   height: 100vh;
   width: 100vw;
@@ -7,6 +23,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column; 
+  background-color: #1b2028;
 }
 
 .welcome {
@@ -60,5 +77,13 @@ p {
   line-height: 25px;
   text-align: justify;
   opacity: 0;
-  color: #585858; 
+  color: #4b5975; 
+}
+
+.correct {
+  color: #ccccb5;
+}
+
+.incorrect {
+  color: #b81b2c;
 }

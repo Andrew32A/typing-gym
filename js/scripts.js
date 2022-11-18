@@ -24,7 +24,7 @@ async function getNextQuote() {
     quoteSplit.forEach(character => {
         characterSpan = document.createElement("span")
         characterSpanArray.push(characterSpan)
-        characterSpan.innerText = character
+        characterSpan.innerText = character.toLowerCase()
         quote_display.appendChild(characterSpan)
     });
     quote_input.value = null
@@ -40,16 +40,12 @@ document.addEventListener("keydown", (e) => {
     // let characters = quote_display.querySelectorAll("span")
 
     // change color to green for correct
-    if (keyStroke === character) {
-        console.log(`key pressed: ${keyStroke}, key code: ${code}`);
-        console.log(counter)
-        console.log(character)
+    if (keyStroke === character.toLowerCase()) {
         // let correctLetter = document.createElement("span")
         // correctLetter.innerText = keyStroke
         // quote_display.appendChild(correctLetter)
         
         // adds "correct" class to span in index with correct key press
-        // character.classList.add = ("correct")
         characterSpanArray[counter].classList.add("correct");
         counter += 1
     }
@@ -64,7 +60,7 @@ document.addEventListener("keydown", (e) => {
     }
 
     // change color to red for incorrect
-    else if (keyStroke != quoteSplit[counter]) {
+    else if (keyStroke != character.toLowerCase()) {
         // let incorrectLetter = document.createElement("span")
         // incorrectLetter.innerText = keyStroke
         // quote_display.appendChild(incorrectLetter)
