@@ -84,16 +84,20 @@ function resetLoop() {
         clearInterval(timer)
     }
 
+    // if typing was disabled and timer is 0, reset loop entirely
     if (allowTyping === false) {
-        if (timeLeft === 0 && document.addEventListener("keydown", (e))) {
-            getNextQuote()
-            timeLeft = 30
-            allowTyping = true
-            counter = 0
-            totalCounter = 0
-            mistakesCounter = 0
-        }
-        else {resetLoop()}
+        document.addEventListener("keydown", (e) => {
+            if (timeLeft === 0) {
+                characterSpanArray = []
+                getNextQuote()
+                timeLeft = 30
+                counter = 0
+                totalCounter = 0
+                mistakesCounter = 0
+                allowTyping = true
+            }
+            // else {resetLoop()}
+        })
     }
 }
 
