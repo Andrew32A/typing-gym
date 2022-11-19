@@ -78,6 +78,11 @@ p {
   text-align: justify;
   opacity: 0;
   color: #4b5975; 
+  font-weight: 400;
+  font-size: 1em;
+  font-variant: no-common-ligatures;
+  font-size: 20px;
+
 }
 
 .correct {

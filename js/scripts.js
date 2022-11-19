@@ -4,10 +4,10 @@ const quote_display = document.getElementById("quoteDisplay")
 const quote_input = document.getElementById("quoteInput")
 
 // init variables
-let quoteSplit // contains array for quote
+let quoteSplit // contains array for quote that i later reassign to character
+let characterSpanArray = [] // array created from quoteSplit that stores the spans
 let counter = 0;
 let characterSpan = document.createElement("span")
-let characterSpanArray = []
 
 // fetches quote from api
 function getQuote() {
@@ -31,27 +31,26 @@ async function getNextQuote() {
     console.log(quote)
 }
 
+// couldn't find an equivalent to isAlpha so i snagged this off of stackoverflow
+const isAlpha = function(ch) {
+    return typeof ch === "string" && ch.length === 1 && (ch >= "a" && ch <= "z" || ch >= "A" && ch <= "Z");
+}
 
 // get user input
 document.addEventListener("keydown", (e) => {
     let keyStroke = e.key;
     let code = e.code;
     let character = quoteSplit[counter]
-    // let characters = quote_display.querySelectorAll("span")
 
     // change color to green for correct
-    if (keyStroke === character.toLowerCase()) {
-        // let correctLetter = document.createElement("span")
-        // correctLetter.innerText = keyStroke
-        // quote_display.appendChild(correctLetter)
-        
+    if (keyStroke === character.toLowerCase()) {       
         // adds "correct" class to span in index with correct key press
         characterSpanArray[counter].classList.add("correct");
         counter += 1
     }
 
     // if return is pressed, then undo color change
-    else if (keyStroke === "Backspace") {
+    else if (keyStroke === "Backspace" && counter >= 1) {
         counter -= 1
         
         // removes "incorrect" and "correct" class from span in index when user inputs "Backspace"
@@ -60,29 +59,21 @@ document.addEventListener("keydown", (e) => {
     }
 
     // change color to red for incorrect
-    else if (keyStroke != character.toLowerCase()) {
-        // let incorrectLetter = document.createElement("span")
-        // incorrectLetter.innerText = keyStroke
-        // quote_display.appendChild(incorrectLetter)
-        
+    else if (keyStroke != character.toLowerCase() && isAlpha(keyStroke) === true) {
         // adds "incorrect" class to span in index with incorrect key press
         characterSpanArray[counter].classList.add("incorrect");    
         counter += 1
     }
 
     
-
+    // console log area
     console.log(`key pressed: ${keyStroke}, key code: ${code}`);
     console.log(counter)
-
     // console.log(characters[0])
     // console.log(quote_display[0])
     // console.log(getNextQuote[0])
     console.log(character)
 })
-
-
-// check user input against api string | return "correct" or "incorrect" comparing user's input
 
 // add WPM counter, add a value that goes up by one evert time the correct key is pressed and divide the total by 60
 
