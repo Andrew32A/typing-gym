@@ -12,6 +12,7 @@ let quoteSplit // contains array for quote that i later reassign to character
 let characterSpanArray = [] // array created from quoteSplit that stores the spans
 let counter = 0 // stores keys hit per quote
 let totalCounter = 0 // stores total counter per session
+let mistakesCounter = 0
 let characterSpan = document.createElement("span")
 let timeLeft = 30
 let isTimerStarted = true
@@ -52,6 +53,11 @@ function completedChecker() {
     }
 }
 
+// tallies mistakes and adds to innerText
+function mistakes() {
+    mistakesDisplay.innerText = mistakesCounter
+}
+
 // timer
 function timer() {
     if (timeLeft > 0) {
@@ -69,6 +75,7 @@ function wpmCounter() {
 
 // resets session
 function resetLoop() {
+    mistakes()
     completedChecker()
 
     // when timer hits 0, pause everything and display results
@@ -84,6 +91,7 @@ function resetLoop() {
             allowTyping = true
             counter = 0
             totalCounter = 0
+            mistakesCounter = 0
         }
         else {resetLoop()}
     }
@@ -111,13 +119,24 @@ document.addEventListener("keydown", (e) => {
         }
 
         // if return is pressed, then undo color change
-        else if (keyStroke === "Backspace" && counter >= 1) {
-            counter -= 1
-            totalCounter -= 1
-            
-            // removes "incorrect" and "correct" class from span in index when user inputs "Backspace"
-            characterSpanArray[counter].classList.remove("correct");    
-            characterSpanArray[counter].classList.remove("incorrect");   
+        else if (keyStroke === "Backspace" && counter > 0) {
+            if (characterSpanArray[counter - 1].classList.contains("incorrect")) {
+                characterSpanArray[counter - 1].classList.remove("incorrect");
+                characterSpanArray[counter - 1].classList.remove("correct");
+                console.log("it did something")
+                counter -= 1
+                totalCounter -= 1
+                mistakesCounter -= 1  
+            }
+
+            else {
+                counter -= 1
+                totalCounter -= 1
+                
+                // removes "incorrect" and "correct" class from span in index when user inputs "Backspace"
+                characterSpanArray[counter].classList.remove("correct");    
+                // characterSpanArray[counter].classList.remove("incorrect"); 
+            } 
         }
 
         // change color to red for incorrect
@@ -126,6 +145,7 @@ document.addEventListener("keydown", (e) => {
             characterSpanArray[counter].classList.add("incorrect");    
             counter += 1
             totalCounter += 1
+            mistakesCounter += 1
         }
 
         // console log area set to true or false
@@ -133,6 +153,7 @@ document.addEventListener("keydown", (e) => {
             console.log(`key pressed: ${keyStroke}, key code: ${code}`);
             console.log(counter)
             console.log(character)
+            console.log(characterSpanArray[counter])
 
         // calls functions created above
         resetLoop() // contains completed checker too
