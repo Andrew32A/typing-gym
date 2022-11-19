@@ -36,6 +36,15 @@ const isAlpha = function(ch) {
     return typeof ch === "string" && ch.length === 1 && (ch >= "a" && ch <= "z" || ch >= "A" && ch <= "Z");
 }
 
+// checks if user completed prompt
+function completedChecker() {
+    if (counter === characterSpanArray.length) {
+        counter = 0
+        characterSpanArray = [] // resets array for character spans
+        getNextQuote()
+    }
+}
+
 // get user input
 document.addEventListener("keydown", (e) => {
     let keyStroke = e.key;
@@ -73,6 +82,7 @@ document.addEventListener("keydown", (e) => {
     // console.log(quote_display[0])
     // console.log(getNextQuote[0])
     console.log(character)
+    completedChecker()
 })
 
 // add WPM counter, add a value that goes up by one evert time the correct key is pressed and divide the total by 60
