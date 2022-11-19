@@ -82,7 +82,7 @@ p {
   font-size: 1em;
   font-variant: no-common-ligatures;
   font-size: 20px;
-
+  padding: 1em;
 }
 
 .correct {
@@ -91,4 +91,5 @@ p {
 
 .incorrect {
   color: #b81b2c;
+  text-decoration: underline;
 }
