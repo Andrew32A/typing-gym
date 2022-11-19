@@ -118,8 +118,9 @@ document.addEventListener("keydown", (e) => {
             totalCounter += 1
         }
 
-        // if return is pressed, then undo color change
+        // if return is pressed, then removes "incorrect" and "correct" classes and undo color change
         else if (keyStroke === "Backspace" && counter > 0) {
+            // checks if previous index contains "incorrect" inside of it's class, if so, it runs the same as the else statement and removes 1 from the mistakes counter
             if (characterSpanArray[counter - 1].classList.contains("incorrect")) {
                 characterSpanArray[counter - 1].classList.remove("incorrect");
                 characterSpanArray[counter - 1].classList.remove("correct");
@@ -132,10 +133,7 @@ document.addEventListener("keydown", (e) => {
             else {
                 counter -= 1
                 totalCounter -= 1
-                
-                // removes "incorrect" and "correct" class from span in index when user inputs "Backspace"
                 characterSpanArray[counter].classList.remove("correct");    
-                // characterSpanArray[counter].classList.remove("incorrect"); 
             } 
         }
 
@@ -156,7 +154,7 @@ document.addEventListener("keydown", (e) => {
             console.log(characterSpanArray[counter])
 
         // calls functions created above
-        resetLoop() // contains completed checker too
+        resetLoop() // contains completed checker and handles mistakes push to innerHTML
         }
     }
 })
