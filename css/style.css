@@ -93,3 +93,15 @@ p {
   color: #b81b2c;
   text-decoration: underline;
 }
+
+#timeDisplay {
+  padding-bottom: 0;
+  margin: 0;
+  color: #23a9d5;
+}
+
+.info {
+  border-top: #4b5975 solid;
+  display: flex;
+  justify-content: flex-start;
+}

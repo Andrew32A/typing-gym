@@ -66,3 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
   	easing: "easeOutExpo",
 		delay: (el, i) => 5200 + 100 * i,
 	})
+
+	// anime({
+	// targets: '.info',
+  	// opacity: 1,
+  	// duration: 1800,
+  	// translateY: ["-30px", "0px"],
+  	// easing: "easeOutExpo",
+	// 	delay: (el, i) => 5200 + 100 * i,
+	// })
