@@ -14,6 +14,30 @@
 
 */
 
+@keyframes transitionIn {
+  from {
+      opacity: 0;
+      transform: translateY(-100px) scale3d(0);
+  }
+
+  to {
+      opacity: 1;
+      transform: translateY(0) scale3d(2, 2);
+  }
+}
+
+@keyframes transitionOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale3d(2, 2);
+  }
+
+  to {
+      opacity: 0;
+      transform: translateY(-100px) scale3d(0);
+  }
+}
+
 body {
   height: 100vh;
   width: 100vw;
@@ -126,3 +150,14 @@ p {
 .reset:hover {
   background-image: url("../icons/refresh2.png");
 }
+
+.resultsHidden {
+  display: none;
+  animation: transitionOut 2s;
+}
+
+.resultsDisplay {
+  display: flex;
+  animation: transitionIn 2s;
+}
+
