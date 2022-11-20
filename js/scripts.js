@@ -85,15 +85,14 @@ function resetLoopChecker() {
         clearInterval(timerInterval)
     }
 
-    // if typing was disabled and timer is 0, reset loop entirely
-    if (allowTyping === false) {
-        document.addEventListener("keydown", (e) => {
-            if (timeLeft === 0) {
-                resetLoop()
-            }
-            // else {resetLoop()}
-        })
-    }
+    // if typing was disabled and timer is 0, reset loop entirely || DISABLED FOR NOW, made it annoying to use because the test would reset on any key input
+    // if (allowTyping === false) {
+        // document.addEventListener("keydown", (e) => {
+        //     if (timeLeft === 0) {
+        //         resetLoop()
+        //     }
+        // })
+    // }
 }
 
 // resets session

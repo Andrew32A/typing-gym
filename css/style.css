@@ -125,6 +125,4 @@ p {
 
 .reset:hover {
   background-image: url("../icons/refresh2.png");
-  /* mask-image: image("/icons/refresh2.png"); */
-
 }
