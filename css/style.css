@@ -33,6 +33,7 @@
   }
 
   to {
+      display: none;
       opacity: 0;
       transform: translateY(-100px) scale3d(0);
   }
@@ -152,12 +153,14 @@ p {
 }
 
 .resultsHidden {
-  display: none;
-  animation: transitionOut 2s;
+  display: flex;
+  animation: transitionOut 1s;
+  animation-fill-mode: forwards;
+  /* display: none; */
 }
 
 .resultsDisplay {
   display: flex;
-  animation: transitionIn 2s;
+  animation: transitionIn 1s;
 }
 
