@@ -67,11 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		delay: (el, i) => 5200 + 100 * i,
 	})
 
+// refresh icon image || idk why this wasn't working so i wrapped the img tag in a p tag
 	// anime({
-	// targets: '.info',
-  	// opacity: 1,
-  	// duration: 1800,
-  	// translateY: ["-30px", "0px"],
-  	// easing: "easeOutExpo",
+	// 	targets: '.reset',
+	// 	opacity: 1,
+	// 	duration: 1800,
+	// 	translateY: ["-30px", "0px"],
+	// 	easing: "easeOutExpo",
 	// 	delay: (el, i) => 5200 + 100 * i,
 	// })
