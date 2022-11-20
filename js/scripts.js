@@ -16,6 +16,7 @@ let mistakesCounter = 0
 let characterSpan = document.createElement("span")
 let timeLeft = 30
 let isTimerStarted = true
+let timerInterval // allows interval to be seen by other functions
 let allowTyping = true
 
 // fetches quote from api
@@ -73,33 +74,41 @@ function wpmCounter() {
     wpmDisplay.innerHTML = wpm
 }
 
-// resets session
-function resetLoop() {
+// checks if we need to reset session
+function resetLoopChecker() {
     mistakes()
     completedChecker()
 
     // when timer hits 0, pause everything and display results
     if (timeLeft === 0) {
         allowTyping = false
-        clearInterval(timer)
+        clearInterval(timerInterval)
     }
 
     // if typing was disabled and timer is 0, reset loop entirely
     if (allowTyping === false) {
         document.addEventListener("keydown", (e) => {
             if (timeLeft === 0) {
-                characterSpanArray = []
-                getNextQuote()
-                timeLeft = 30
-                counter = 0
-                totalCounter = 0
-                mistakesCounter = 0
-                allowTyping = true
-                mistakes() // may need to move this later, put this here to reset mistakes display counter right away
+                resetLoop()
             }
             // else {resetLoop()}
         })
     }
+}
+
+// resets session
+function resetLoop() {
+    clearInterval(timerInterval)
+    isTimerStarted = true
+    characterSpanArray = []
+    getNextQuote()
+    timeLeft = 30
+    timeDisplay.innerText = timeLeft
+    counter = 0
+    totalCounter = 0
+    mistakesCounter = 0
+    allowTyping = true
+    mistakes() // may need to move this later, put this here to reset mistakes display counter right away
 }
 
 // get user input
@@ -111,7 +120,7 @@ document.addEventListener("keydown", (e) => {
     if (allowTyping === true) {
 
         if (isTimerStarted === true) {
-            setInterval(timer, 1000)
+            timerInterval = setInterval(timer, 1000)
             isTimerStarted = false
         }
 
@@ -159,7 +168,7 @@ document.addEventListener("keydown", (e) => {
             console.log(characterSpanArray[counter])
 
         // calls functions created above
-        resetLoop() // contains completed checker and handles mistakes push to innerHTML
+        resetLoopChecker() // contains completed checker and handles mistakes push to innerHTML
         }
     }
 })
