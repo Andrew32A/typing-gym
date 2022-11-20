@@ -106,21 +106,25 @@ p {
   justify-content: flex-start;
 }
 
+.resetWrapper {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding: 0px;
+}
+
 .reset {
   display: flex;
   justify-content: center;
   cursor: pointer;
   padding: 5px;
-  /* margin-top: 20px; */
-  margin-bottom: 20px;
   margin: auto;
-  /* color: #4b5975;
-  fill: #4b5975; */
-  /* background-image: url("/icons/refresh1.png"); */
+  min-height: 20px;
+  min-width: 25px;
 }
 
 .reset:hover {
-  /* background-image: url("/icons/refresh2.png"); */
-  mask-image: image("/icons/refresh2.png");
-  /* background-size: cover; */
+  background-image: url("../icons/refresh2.png");
+  /* mask-image: image("/icons/refresh2.png"); */
+
 }
