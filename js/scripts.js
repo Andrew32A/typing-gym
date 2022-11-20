@@ -106,6 +106,7 @@ function resetLoop() {
     counter = 0
     totalCounter = 0
     mistakesCounter = 0
+    wpmDisplay.innerHTML = "--" // removes last wpm display to avoid confusion for the user
     allowTyping = true
     mistakes() // may need to move this later, put this here to reset mistakes display counter right away
 }
