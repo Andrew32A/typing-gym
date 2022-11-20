@@ -95,6 +95,7 @@ function resetLoop() {
                 totalCounter = 0
                 mistakesCounter = 0
                 allowTyping = true
+                mistakes() // may need to move this later, put this here to reset mistakes display counter right away
             }
             // else {resetLoop()}
         })
