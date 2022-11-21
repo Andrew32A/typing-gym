@@ -6,6 +6,8 @@ const quoteDisplay = document.getElementById("quoteDisplay")
 const timeDisplay = document.getElementById("timeDisplay")
 const wpmDisplay = document.getElementById("wpmDisplay")
 const mistakesDisplay = document.getElementById("mistakesDisplay")
+const resultsDisplay = document.getElementById("results")
+const accuracyDisplay = document.getElementById("accuracyDisplay")
 
 // init variables
 let quoteSplit // contains array for quote that i later reassign to character
@@ -65,6 +67,7 @@ function timer() {
         timeLeft -= 1
         timeDisplay.innerText = timeLeft
         wpmCounter() // had to put wpm counter in here to prevent input from refreshing constantly
+        accuracyCalculator() // same as wpm counter
     }
 }
 
@@ -72,6 +75,12 @@ function timer() {
 function wpmCounter() {
     let wpm = Math.round((totalCounter / 5) / (((timeLeft - 30) * (-1) / 60)))
     wpmDisplay.innerHTML = wpm
+}
+
+// calculates accuracy which is displayed in the results
+function accuracyCalculator() {
+    let accuracy = Math.round((((mistakesCounter / totalCounter) * 100) - 100) * -1)
+    accuracyDisplay.innerHTML = `${accuracy}%`
 }
 
 // checks if we need to reset session
@@ -107,6 +116,9 @@ function displayResults() {
     else {
         mistakesDisplay.classList.add("mistakesResultsPerfect") // adds white color to mistakes display
     }
+
+    resultsDisplay.classList.remove("resultsHidden") // removes the css that hides results
+    resultsDisplay.classList.add("resultsDisplay") // adds css which show results
 }
 
 // resets session
@@ -123,6 +135,8 @@ function resetLoop() {
     wpmDisplay.classList.remove("wpmResults") // removes color when session is reset   
     mistakesDisplay.classList.remove("mistakesResultsRed") // removes color when session is reset
     mistakesDisplay.classList.remove("mistakesResultsPerfect") // removes color when session is reset
+    resultsDisplay.classList.remove("resultsDisplay") // removes display properties
+    resultsDisplay.classList.add("resultsHidden") // adds hidden properties which hide the element
     wpmDisplay.innerHTML = "--" // removes last wpm display to avoid confusion for the user
     allowTyping = true
     mistakes() // may need to move this later, put this here to reset mistakes display counter right away
