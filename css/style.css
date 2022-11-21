@@ -145,11 +145,10 @@ p {
   padding: 5px;
   padding-left: 0px; /* may need to change this later, tried to get the "background image" as close as I could to the center || background image is a bit jank but this is the only way I could get the hover to work */
   margin: auto;
-  min-width: 27px;
+  min-width: 27px; /* had to use mins and max, normal attributes weren't working || also something else is adjusting px size, so the values here are -10 and -5 px of displayed value respectively */
   min-height: 15px;
   max-width: 27px;
   max-height: 15px;
-  
   background-image: url("../icons/refresh1.png");
   background-size: contain;
   background-repeat: no-repeat;
