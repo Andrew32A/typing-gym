@@ -170,7 +170,7 @@ p {
 }
 
 .mistakesResultsPerfect {
-  color: #ccccb5;
+  color: #23a9d5;
 }
 
 .mistakesResultsRed {
@@ -178,6 +178,10 @@ p {
 }
 
 #accuracyDisplay {
+  color: #23a9d5;
+}
+
+#charactersDisplay {
   color: #23a9d5;
 }
 

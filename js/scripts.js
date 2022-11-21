@@ -8,6 +8,7 @@ const wpmDisplay = document.getElementById("wpmDisplay")
 const mistakesDisplay = document.getElementById("mistakesDisplay")
 const resultsDisplay = document.getElementById("results")
 const accuracyDisplay = document.getElementById("accuracyDisplay")
+const charactersDisplay = document.getElementById("charactersDisplay")
 
 // init variables
 let quoteSplit // contains array for quote that i later reassign to character
@@ -56,9 +57,14 @@ function completedChecker() {
     }
 }
 
-// tallies mistakes and adds to innerText
+// after mistakes were tallied, adds to innerText
 function mistakes() {
     mistakesDisplay.innerText = mistakesCounter
+}
+
+// after characters were tallied, adds to innerHTML
+function charactersCounter() {
+    charactersDisplay.innerHTML = totalCounter
 }
 
 // timer
@@ -86,6 +92,7 @@ function accuracyCalculator() {
 // checks if we need to reset session
 function resetLoopChecker() {
     mistakes()
+    charactersCounter()
     completedChecker()
 
     // when timer hits 0, pause everything and display results
@@ -114,7 +121,7 @@ function displayResults() {
     }
 
     else {
-        mistakesDisplay.classList.add("mistakesResultsPerfect") // adds white color to mistakes display
+        mistakesDisplay.classList.add("mistakesResultsPerfect") // adds blue color to mistakes display
     }
 
     resultsDisplay.classList.remove("resultsHidden") // removes the css that hides results
