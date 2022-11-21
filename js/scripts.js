@@ -23,8 +23,8 @@ let timerInterval // allows interval to be seen by other functions
 let allowTyping = true
 
 // fetches quote from api
-function getQuote() {
-    return fetch(random_quote_api_url)
+async function getQuote() {
+    return await fetch(random_quote_api_url)
         .then(response => response.json())
         .then(data => data.content)
 }
