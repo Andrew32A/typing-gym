@@ -126,7 +126,7 @@ p {
 }
 
 .info {
-  border-top: #4b5975 solid;
+  border-top: #4b5975 solid 1px;
   display: flex;
   justify-content: flex-start;
 }
