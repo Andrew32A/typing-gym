@@ -98,14 +98,14 @@ function resetLoopChecker() {
 
 // displays results once timer hits 0 || changes colors of wpm and mistakes too
 function displayResults() {
-    wpmDisplay.classList.add("wpmResults")
+    wpmDisplay.classList.add("wpmResults") // adds blue color to wpm display
 
     if (mistakesCounter > 0) {
-        mistakesDisplay.classList.add("mistakesResultsRed")
+        mistakesDisplay.classList.add("mistakesResultsRed") // adds red color to mistakes display
     }
 
     else {
-        mistakesDisplay.classList.add("mistakesResultsPerfect")
+        mistakesDisplay.classList.add("mistakesResultsPerfect") // adds white color to mistakes display
     }
 }
 
@@ -128,67 +128,69 @@ function resetLoop() {
     mistakes() // may need to move this later, put this here to reset mistakes display counter right away
 }
 
-// get user input
-document.addEventListener("keydown", (e) => {
-    let keyStroke = e.key;
-    let code = e.code;
-    let character = quoteSplit[counter]
+// main loop which also grabs get user input
+if (allowTyping === true) {
+    document.addEventListener("keydown", (e) => {
+        let keyStroke = e.key;
+        let code = e.code;
+        let character = quoteSplit[counter]
 
-    if (allowTyping === true) {
-
-        if (isTimerStarted === true) {
-            timerInterval = setInterval(timer, 1000)
-            isTimerStarted = false
-        }
-
-        // change color to green for correct
-        if (keyStroke === character.toLowerCase()) {       
-            // adds "correct" class to span in index with correct key press
-            characterSpanArray[counter].classList.add("correct");
-            counter += 1
-            totalCounter += 1
-        }
-
-        // if return is pressed, then removes "incorrect" and "correct" classes and undo color change
-        else if (keyStroke === "Backspace" && counter > 0) {
-            // checks if previous index contains "incorrect" inside of it's class, if so, it runs the same as the else statement and removes 1 from the mistakes counter
-            if (characterSpanArray[counter - 1].classList.contains("incorrect")) {
-                characterSpanArray[counter - 1].classList.remove("incorrect");
-                characterSpanArray[counter - 1].classList.remove("correct");
-                console.log("it did something")
-                counter -= 1
-                totalCounter -= 1
-                mistakesCounter -= 1  
+        if (allowTyping === true) { // probably redundant, just experimenting with conditional before adding event listener, this is just a legacy conditional
+            if (isTimerStarted === true) {
+                timerInterval = setInterval(timer, 1000)
+                isTimerStarted = false
             }
 
-            else {
-                counter -= 1
-                totalCounter -= 1
-                characterSpanArray[counter].classList.remove("correct");    
-            } 
-        }
+            // change color to green for correct
+            if (keyStroke === character.toLowerCase()) {       
+                // adds "correct" class to span in index with correct key press
+                characterSpanArray[counter].classList.add("correct")
+                counter += 1
+                totalCounter += 1
+            }
 
-        // change color to red for incorrect
-        else if (keyStroke != character.toLowerCase() && isAlpha(keyStroke) === true) {
-            // adds "incorrect" class to span in index with incorrect key press
-            characterSpanArray[counter].classList.add("incorrect");    
-            counter += 1
-            totalCounter += 1
-            mistakesCounter += 1
-        }
+            // if return is pressed, then removes "incorrect" and "correct" classes and undo color change
+            else if (keyStroke === "Backspace" && counter > 0) {
+                // checks if previous index contains "incorrect" inside of it's class, if so, it runs the same as the else statement and removes 1 from the mistakes counter
+                if (characterSpanArray[counter - 1].classList.contains("incorrect")) {
+                    characterSpanArray[counter - 1].classList.remove("incorrect")
+                    characterSpanArray[counter - 1].classList.remove("correct")
+                    counter -= 1
+                    totalCounter -= 1
+                    mistakesCounter -= 1  
+                }
 
-        // console log area set to true or false
-        if (true) {
-            console.log(`key pressed: ${keyStroke}, key code: ${code}`);
-            console.log(counter)
-            console.log(character)
-            console.log(characterSpanArray[counter])
+                else {
+                    counter -= 1
+                    totalCounter -= 1
+                    characterSpanArray[counter].classList.remove("correct")   
+                } 
+            }
+
+            // change color to red for incorrect
+            else if (keyStroke != character.toLowerCase() && isAlpha(keyStroke) === true) {
+                // adds "incorrect" class to span in index with incorrect key press
+                characterSpanArray[counter].classList.add("incorrect") 
+                counter += 1
+                totalCounter += 1
+                mistakesCounter += 1
+            }
+
+            // console log area set to true or false
+            if (true === true) {
+                console.log(`key pressed: ${keyStroke}, key code: ${code}`)
+                console.log(counter)
+                console.log(character)
+                console.log(characterSpanArray[counter])
+            }
 
         // calls functions created above
-    }
-    resetLoopChecker() // contains completed checker and handles mistakes push to innerHTML
-    }
-})
+        resetLoopChecker() // contains completed checker and handles mistakes push to innerHTML
+
+        }
+    })
+}
 
 // starts loop
 getNextQuote()
+
