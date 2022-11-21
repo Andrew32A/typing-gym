@@ -164,3 +164,16 @@ p {
   animation: transitionIn 1s;
 }
 
+/* adds color to wpm number when session is finished */
+.wpmResults {
+  color: #23a9d5;
+}
+
+.mistakesResultsPerfect {
+  color: #ccccb5;
+}
+
+.mistakesResultsRed {
+  color: #b81b2c
+}
+

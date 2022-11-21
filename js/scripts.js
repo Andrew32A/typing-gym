@@ -83,6 +83,7 @@ function resetLoopChecker() {
     if (timeLeft === 0) {
         allowTyping = false
         clearInterval(timerInterval)
+        displayResults()
     }
 
     // if typing was disabled and timer is 0, reset loop entirely || DISABLED FOR NOW, made it annoying to use because the test would reset on any key input
@@ -93,6 +94,19 @@ function resetLoopChecker() {
         //     }
         // })
     // }
+}
+
+// displays results once timer hits 0 || changes colors of wpm and mistakes too
+function displayResults() {
+    wpmDisplay.classList.add("wpmResults")
+
+    if (mistakesCounter > 0) {
+        mistakesDisplay.classList.add("mistakesResultsRed")
+    }
+
+    else {
+        mistakesDisplay.classList.add("mistakesResultsPerfect")
+    }
 }
 
 // resets session
@@ -106,6 +120,9 @@ function resetLoop() {
     counter = 0
     totalCounter = 0
     mistakesCounter = 0
+    wpmDisplay.classList.remove("wpmResults") // removes color when session is reset   
+    mistakesDisplay.classList.remove("mistakesResultsRed") // removes color when session is reset
+    mistakesDisplay.classList.remove("mistakesResultsPerfect") // removes color when session is reset
     wpmDisplay.innerHTML = "--" // removes last wpm display to avoid confusion for the user
     allowTyping = true
     mistakes() // may need to move this later, put this here to reset mistakes display counter right away
@@ -168,8 +185,8 @@ document.addEventListener("keydown", (e) => {
             console.log(characterSpanArray[counter])
 
         // calls functions created above
-        resetLoopChecker() // contains completed checker and handles mistakes push to innerHTML
-        }
+    }
+    resetLoopChecker() // contains completed checker and handles mistakes push to innerHTML
     }
 })
 
