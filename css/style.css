@@ -198,3 +198,37 @@ p {
   overflow: hidden;
 } */
 
+@keyframes blink {
+  from {
+      border-right: 1px solid #ccccb5;
+      /* transform: translateY(-100px) scale3d(0); */
+  }
+
+  to {
+      border-right: 1px solid #1b2028;
+      /* transform: translateY(0) scale3d(2, 2); */
+  }
+}
+
+@keyframes firstBlink {
+  from {
+      border-left: 1px solid #ccccb5;
+      /* transform: translateY(-100px) scale3d(0); */
+  }
+
+  to {
+      border-left: 1px solid #1b2028;
+      /* transform: translateY(0) scale3d(2, 2); */
+  }
+}
+
+.blinking {
+  animation: blink 1s;
+  animation-iteration-count: infinite;
+}
+
+.firstBlinking {
+  animation: firstBlink 1s;
+  animation-iteration-count: infinite;
+}
+

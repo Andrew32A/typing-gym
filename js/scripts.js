@@ -41,7 +41,7 @@ async function getNextQuote() {
         characterSpan.innerText = character.toLowerCase()
         quoteDisplay.appendChild(characterSpan)
     })
-    characterSpanArray[0].style.borderLeft = "1px solid #ccccb5"
+    characterSpanArray[0].classList.add("firstBlinking") 
     console.log(quote)
 }
 
@@ -138,11 +138,14 @@ function displayResults() {
 
 function blinkyThing(numberCounter = 0) {
     characterSpanArray.forEach((span) => {
-        span.style.borderRight = "0px"
-        span.style.borderLeft = "0px"
+        // span.style.borderRight = "0px"
+        // span.style.borderLeft = "0px"
+        span.classList.remove("blinking")
+        span.classList.remove("firstBlinking")
     })
 
-    characterSpanArray[counter + numberCounter].style.borderRight = "1px solid #ccccb5"
+    // characterSpanArray[counter + numberCounter].style.borderRight = "1px solid #ccccb5"
+    characterSpanArray[counter + numberCounter].classList.add("blinking") 
 }
 
 // resets session
