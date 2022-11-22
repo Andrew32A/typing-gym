@@ -11,7 +11,7 @@ const accuracyDisplay = document.getElementById("accuracyDisplay")
 const charactersDisplay = document.getElementById("charactersDisplay")
 
 // init variables
-const style = document.createElement('style') // style testing
+// const fs = require('fs')
 let quoteSplit // contains array for quote that i later reassign to character
 let characterSpanArray = [] // array created from quoteSplit that stores the spans
 let counter = 0 // stores keys hit per quote
@@ -40,7 +40,8 @@ async function getNextQuote() {
         characterSpanArray.push(characterSpan)
         characterSpan.innerText = character.toLowerCase()
         quoteDisplay.appendChild(characterSpan)
-    });
+    })
+    characterSpanArray[0].style.borderLeft = "1px solid #ccccb5"
     console.log(quote)
 }
 
@@ -106,21 +107,23 @@ function resetLoopChecker() {
         clearInterval(timerInterval)
         displayResults()
     }
-
-    // if typing was disabled and timer is 0, reset loop entirely || DISABLED FOR NOW, made it annoying to use because the test would reset on any key input
-    // if (allowTyping === false) {
-        // document.addEventListener("keydown", (e) => {
-        //     if (timeLeft === 0) {
-        //         resetLoop()
-        //     }
-        // })
-    // }
 }
 
 // displays results once timer hits 0 || changes colors of wpm and mistakes too
 function displayResults() {
     wpmDisplay.classList.add("wpmResults") // adds blue color to wpm display
 
+    // leaderboard for future me to finish
+    // fs.writeFile("leaderboard.txt", wpmCounter, (err) => {
+    //     if (err)
+    //       console.log(err);
+    //     else {
+    //       console.log("File written successfully\n");
+    //       console.log("The written has the following contents:");
+    //       console.log(fs.readFileSync("leaderboard.txt", "utf8"));
+    //     }
+    //   });
+    
     if (mistakesCounter > 0) {
         mistakesDisplay.classList.add("mistakesResultsRed") // adds red color to mistakes display
     }
@@ -134,27 +137,9 @@ function displayResults() {
 }
 
 function blinkyThing(numberCounter = 0) {
-    // let blink = document.getElementsByClassName("correct")
-    // blink[(blink.length()) - (1)].style.borderRight = "1px solid #ccccb5"
-
-    // blink[(blink.length()) - (1)].style.borderRight = "1px solid #ccccb5"
-    // get rid of previous blinky here
-
-
-    // if (counter > 0) {
-    //     characterSpanArray[counter + counterChanger].style.borderRight = ""
-    // }
-
-    // characterSpanArray[counter + placement].style.borderRight = "1px solid #ccccb5"
-    // style.innerHTML = `
-    //   span {
-    //     border-right: 0px;
-    //   }
-    // `
-    // document.head.appendChild(style)
-
     characterSpanArray.forEach((span) => {
         span.style.borderRight = "0px"
+        span.style.borderLeft = "0px"
     })
 
     characterSpanArray[counter + numberCounter].style.borderRight = "1px solid #ccccb5"
@@ -249,4 +234,3 @@ document.addEventListener("keydown", (e) => {
 
 // starts loop
 getNextQuote()
-
