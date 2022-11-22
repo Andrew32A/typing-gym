@@ -120,6 +120,18 @@ function resetLoopChecker() {
 // displays results once timer hits 0 || changes colors of wpm and mistakes too
 function displayResults() {
     wpmDisplay.classList.add("wpmResults") // adds blue color to wpm display
+    timeDisplay.innerText = ("Time's up! Hit the button below to try again") // replaces time display with text
+    
+    if (mistakesCounter > 0) {
+        mistakesDisplay.classList.add("mistakesResultsRed") // adds red color to mistakes display
+    }
+    
+    else {
+        mistakesDisplay.classList.add("mistakesResultsPerfect") // adds blue color to mistakes display
+    }
+    
+    resultsDisplay.classList.remove("resultsHidden") // removes the css that hides results
+    resultsDisplay.classList.add("resultsDisplay") // adds css which show results
 
     // leaderboard for future me to finish
     // fs.writeFile("leaderboard.txt", wpmCounter, (err) => {
@@ -131,17 +143,6 @@ function displayResults() {
     //       console.log(fs.readFileSync("leaderboard.txt", "utf8"));
     //     }
     //   });
-    
-    if (mistakesCounter > 0) {
-        mistakesDisplay.classList.add("mistakesResultsRed") // adds red color to mistakes display
-    }
-
-    else {
-        mistakesDisplay.classList.add("mistakesResultsPerfect") // adds blue color to mistakes display
-    }
-
-    resultsDisplay.classList.remove("resultsHidden") // removes the css that hides results
-    resultsDisplay.classList.add("resultsDisplay") // adds css which show results
 }
 
 function blinkyThing(numberCounter = 0) {
