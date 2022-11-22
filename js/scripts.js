@@ -106,6 +106,14 @@ function resetLoopChecker() {
         allowTyping = false
         clearInterval(timerInterval)
         displayResults()
+
+        // removes blinking to signal the user that the session is done
+        characterSpanArray.forEach((span) => {
+            // span.style.borderRight = "0px"
+            // span.style.borderLeft = "0px"
+            span.classList.remove("blinking")
+            span.classList.remove("firstBlinking")
+        })
     }
 }
 
