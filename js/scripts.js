@@ -11,6 +11,7 @@ const accuracyDisplay = document.getElementById("accuracyDisplay")
 const charactersDisplay = document.getElementById("charactersDisplay")
 
 // init variables
+const style = document.createElement('style') // style testing
 let quoteSplit // contains array for quote that i later reassign to character
 let characterSpanArray = [] // array created from quoteSplit that stores the spans
 let counter = 0 // stores keys hit per quote
@@ -75,6 +76,10 @@ function timer() {
         wpmCounter() // had to put wpm counter in here to prevent input from refreshing constantly
         accuracyCalculator() // same as wpm counter
     }
+
+    else {
+        resetLoopChecker()
+    }
 }
 
 // calculates wpm by dividing the number of characters typed by 5 (standard for calculating size of words) then divided again by elapsed time in minutes
@@ -128,6 +133,33 @@ function displayResults() {
     resultsDisplay.classList.add("resultsDisplay") // adds css which show results
 }
 
+function blinkyThing(numberCounter = 0) {
+    // let blink = document.getElementsByClassName("correct")
+    // blink[(blink.length()) - (1)].style.borderRight = "1px solid #ccccb5"
+
+    // blink[(blink.length()) - (1)].style.borderRight = "1px solid #ccccb5"
+    // get rid of previous blinky here
+
+
+    // if (counter > 0) {
+    //     characterSpanArray[counter + counterChanger].style.borderRight = ""
+    // }
+
+    // characterSpanArray[counter + placement].style.borderRight = "1px solid #ccccb5"
+    // style.innerHTML = `
+    //   span {
+    //     border-right: 0px;
+    //   }
+    // `
+    // document.head.appendChild(style)
+
+    characterSpanArray.forEach((span) => {
+        span.style.borderRight = "0px"
+    })
+
+    characterSpanArray[counter + numberCounter].style.borderRight = "1px solid #ccccb5"
+}
+
 // resets session
 function resetLoop() {
     clearInterval(timerInterval)
@@ -149,68 +181,71 @@ function resetLoop() {
     mistakes() // may need to move this later, put this here to reset mistakes display counter right away
 }
 
+
 // main loop which also grabs get user input
-if (allowTyping === true) {
-    document.addEventListener("keydown", (e) => {
-        let keyStroke = e.key;
-        let code = e.code;
-        let character = quoteSplit[counter]
+document.addEventListener("keydown", (e) => {
+    let keyStroke = e.key;
+    let code = e.code;
+    let character = quoteSplit[counter]
 
-        if (allowTyping === true) { // probably redundant, just experimenting with conditional before adding event listener, this is just a legacy conditional
-            if (isTimerStarted === true) {
-                timerInterval = setInterval(timer, 1000)
-                isTimerStarted = false
-            }
-
-            // change color to green for correct
-            if (keyStroke === character.toLowerCase()) {       
-                // adds "correct" class to span in index with correct key press
-                characterSpanArray[counter].classList.add("correct")
-                counter += 1
-                totalCounter += 1
-            }
-
-            // if return is pressed, then removes "incorrect" and "correct" classes and undo color change
-            else if (keyStroke === "Backspace" && counter > 0) {
-                // checks if previous index contains "incorrect" inside of it's class, if so, it runs the same as the else statement and removes 1 from the mistakes counter
-                if (characterSpanArray[counter - 1].classList.contains("incorrect")) {
-                    characterSpanArray[counter - 1].classList.remove("incorrect")
-                    characterSpanArray[counter - 1].classList.remove("correct")
-                    counter -= 1
-                    totalCounter -= 1
-                    mistakesCounter -= 1  
-                }
-
-                else {
-                    counter -= 1
-                    totalCounter -= 1
-                    characterSpanArray[counter].classList.remove("correct")   
-                } 
-            }
-
-            // change color to red for incorrect
-            else if (keyStroke != character.toLowerCase() && isAlpha(keyStroke) === true) {
-                // adds "incorrect" class to span in index with incorrect key press
-                characterSpanArray[counter].classList.add("incorrect") 
-                counter += 1
-                totalCounter += 1
-                mistakesCounter += 1
-            }
-
-            // console log area set to true or false
-            if (true === true) {
-                console.log(`key pressed: ${keyStroke}, key code: ${code}`)
-                console.log(counter)
-                console.log(character)
-                console.log(characterSpanArray[counter])
-            }
-
-        // calls functions created above
-        resetLoopChecker() // contains completed checker and handles mistakes push to innerHTML
-
+    if (allowTyping === true) {
+        if (isTimerStarted === true) {
+            timerInterval = setInterval(timer, 1000)
+            isTimerStarted = false
         }
-    })
-}
+
+        // change color to green for correct
+        if (keyStroke === character.toLowerCase()) {       
+            // adds "correct" class to span in index with correct key press
+            characterSpanArray[counter].classList.add("correct")
+            blinkyThing()
+            counter += 1
+            totalCounter += 1
+        }
+
+        // if return is pressed, then removes "incorrect" and "correct" classes and undo color change
+        else if (keyStroke === "Backspace" && counter > 0) {
+            // checks if previous index contains "incorrect" inside of it's class, if so, it runs the same as the else statement and removes 1 from the mistakes counter
+            if (characterSpanArray[counter - 1].classList.contains("incorrect")) {
+                characterSpanArray[counter - 1].classList.remove("incorrect")
+                characterSpanArray[counter - 1].classList.remove("correct")
+                counter -= 1
+                totalCounter -= 1
+                mistakesCounter -= 1  
+                blinkyThing(-1)
+            }
+
+            else {
+                counter -= 1
+                totalCounter -= 1
+                characterSpanArray[counter].classList.remove("correct")   
+                blinkyThing(-1)
+            } 
+        }
+
+        // change color to red for incorrect
+        else if (keyStroke != character.toLowerCase() && isAlpha(keyStroke) === true) {
+            // adds "incorrect" class to span in index with incorrect key press
+            characterSpanArray[counter].classList.add("incorrect")
+            blinkyThing()
+            counter += 1
+            totalCounter += 1
+            mistakesCounter += 1
+        }
+
+        // console log area set to true or false
+        if (true === true) {
+            console.log(`key pressed: ${keyStroke}, key code: ${code}`)
+            console.log(counter)
+            console.log(character)
+            console.log(characterSpanArray[counter])
+        }
+
+    // calls functions created above
+    // contains completed checker and handles mistakes push to innerHTML 
+    resetLoopChecker()
+    }
+})
 
 // starts loop
 getNextQuote()
