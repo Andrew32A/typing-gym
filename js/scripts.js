@@ -145,7 +145,7 @@ function displayResults() {
     //   });
 }
 
-function blinkyThing(numberCounter = 0) {
+function blinkyThing(counterPositionModifier = 0) {
     characterSpanArray.forEach((span) => {
         // span.style.borderRight = "0px"
         // span.style.borderLeft = "0px"
@@ -154,7 +154,7 @@ function blinkyThing(numberCounter = 0) {
     })
 
     // characterSpanArray[counter + numberCounter].style.borderRight = "1px solid #ccccb5"
-    characterSpanArray[counter + numberCounter].classList.add("blinking") 
+    characterSpanArray[counter + counterPositionModifier].classList.add("blinking") 
 }
 
 // resets session
@@ -181,8 +181,8 @@ function resetLoop() {
 
 // main loop which also grabs get user input
 document.addEventListener("keydown", (e) => {
-    let keyStroke = e.key;
-    let code = e.code;
+    let keyStroke = e.key
+    let code = e.code
     let character = quoteSplit[counter]
 
     if (allowTyping === true) {
