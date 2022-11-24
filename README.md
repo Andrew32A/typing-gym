@@ -3,7 +3,7 @@ For anybody who wants to improve their typing skills without the ad bloat! Typin
 This was also a great way for me to practice JavaScript and apply some of the knowledge I've gained these last few weeks while using flask, bootstrap, and apis.
 
 # How it works
-On pageload, my script grabs a randomly generated quote from https://api.quotable.io and splits the string up into individual spans.
+On page load, my script grabs a randomly generated quote from https://api.quotable.io and splits the string up into individual spans.
 
 ``` javascript
 const random_quote_api_url = 'https://api.quotable.io/random'
@@ -15,7 +15,7 @@ async function getQuote() {
         .then(data => data.content)
 }
 
-// recieves quote from getQuote, splits it into an array, and displays each in it's own span tag
+// recieves quote from getQuote, splits it into an array, and displays each in its own span tag
 async function getNextQuote() {
     const quote = await getQuote()
     quoteDisplay.innerText = ""
@@ -81,7 +81,7 @@ document.addEventListener("keydown", (e) => {
 ```
 
 # What I've learned
-Although this project seems pretty straightforard, there were a bunch of issues early in development. Firstly, there was no "isAlpha" function in JavaScript so I had to
+Although this project seems pretty straightforward, there were a bunch of issues early in development. Firstly, there was no "isAlpha" function in JavaScript so I had to
 make my own: 
 
 ``` javascript 
@@ -91,7 +91,7 @@ const isAlpha = function(ch) {
 ```
 
 Also, one of the biggest hurdles was the blinking cursor logic which signaled the user where their cursor was positioned. I ended up doing something similar to the
-"correct" and "incorrect" class names and assigning the correct span index with a "blinking" tag which had some keyframes and border styling attatched to it. When the user would type or the timer hits zero, a function would erase all "blinking" class tags from all span elements
+"correct" and "incorrect" class names and assigning the correct span index with a "blinking" tag which had some keyframes and border styling attached to it. When the user would type or the timer hits zero, a function would erase all "blinking" class tags from all span elements
 then reassign the correct span with "blinking". This was especially tricky when the user would hit "backspace" so we had to add an argument which would inverse the array position selector to hit the span before the current index.
 Huge props to these amazing folks who helped me out with this: <br> <br>
 https://github.com/alexcrocha <br>
