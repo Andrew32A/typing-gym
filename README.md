@@ -1,8 +1,8 @@
-# Typing Gym
+# Typing Gym:
 For anybody who wants to improve their typing skills without the ad bloat! Typing Gym helps them improve their WPM and speed while typing. I made this project because I was fed up with the ads and cookies on popular typing tests.
 This was also a great way for me to practice JavaScript and apply some of the knowledge I've gained these last few weeks while using flask, bootstrap, and apis.
 
-# How it works
+# How it works:
 On page load, my script grabs a randomly generated quote from https://api.quotable.io and splits the string up into individual spans.
 
 ``` javascript
@@ -80,7 +80,7 @@ document.addEventListener("keydown", (e) => {
         }
 ```
 
-# What I've learned
+# What I've learned:
 Although this project seems pretty straightforward, there were a bunch of issues early in development. Firstly, there was no "isAlpha" function in JavaScript so I had to
 make my own: 
 
@@ -98,7 +98,7 @@ https://github.com/alexcrocha <br>
 https://github.com/Babaganouche622 <br>
 https://github.com/EvilGenius13
 
-# Known bugs
+# Known bugs:
 - If the user hits 2 keys at once at the end of a quote, the program may break. This seems to be especially sensitive to "space" + "any other key"
 - The blinking cursor may update the width of the container which causes a jarring jolt
 - If the quote doesn't show up, it may mean that the api is down. Check https://downforeveryoneorjustme.com/quotable.io or https://github.com/lukePeavey/quotable to see the status of the api
