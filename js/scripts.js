@@ -24,13 +24,30 @@ let timerInterval // allows interval to be seen by other functions
 let allowTyping = true
 
 // fetches quote from api
-async function getQuote() {
-    return await fetch(random_quote_api_url)
-        .then(response => response.json())
-        .then(data => data.content)
-}
+function getQuote() {
+    return fetch(random_quote_api_url)
+    .then((response) => {
+        console.log(response)
+        if (response.ok) {
+            return response.json()
+        }
+        else {
+            throw new Error('Something went wrong')
+        }
+    })
+    
+    .then((data) => {
+        console.log(data)
+        return data.content
+    })
 
-// recieves quote from getQuote, splits it into an array, and displays each in it's own span tag
+    .catch((error) => {
+        console.log(error)
+        return "the api is down currently, but here's some example text to demo my project"
+    })
+} 
+
+// recieves quote from getQuote, splits it into an array, and displays each in its own span tag
 async function getNextQuote() {
     const quote = await getQuote()
     quoteDisplay.innerText = ""
