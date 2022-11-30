@@ -178,7 +178,7 @@ function displayResults() {
     //   });
 }
 
-// handles blinker logic, if the user tries to delete from index 1 to index 0 or tries to backspace from index 0, the script will check for a TypeError and replace index 1 with a left border blink
+// handles blinker logic, if the user tries to delete from index 1 to index 0 or tries to backspace from index 0, the script will check for a TypeError and replace index 0 with a left border blink
 function blinkyThing(counterPositionModifier = 0) {
     try {
         characterSpanArray.forEach((span) => {
@@ -187,18 +187,16 @@ function blinkyThing(counterPositionModifier = 0) {
             span.classList.remove("blinking")
             span.classList.remove("firstBlinking")
         })
-
         // characterSpanArray[counter + numberCounter].style.borderRight = "1px solid #ccccb5"
         characterSpanArray[counter + counterPositionModifier].classList.add("blinking") 
     }
 
     catch (err) {
-            if (err instanceof TypeError) {
+        if (err instanceof TypeError) {
             characterSpanArray.forEach((span) => {
-            span.classList.remove("blinking")
-            span.classList.remove("firstBlinking")
-            })
-
+                span.classList.remove("blinking")
+                span.classList.remove("firstBlinking")
+        })
         characterSpanArray[0].classList.add("firstBlinking") 
         }
     }
@@ -224,7 +222,6 @@ function resetLoop() {
     allowTyping = true
     mistakes() // may need to move this later, put this here to reset mistakes display counter right away
 }
-
 
 // main loop which also grabs get user input
 document.addEventListener("keydown", (e) => {
@@ -268,7 +265,7 @@ document.addEventListener("keydown", (e) => {
         }
 
         // change color to red for incorrect
-        else if (keyStroke != character.toLowerCase() && isAlpha(keyStroke) === true) {
+        else if (keyStroke != character.toLowerCase() && isAlpha(keyStroke) === true || code === "Space") {
             // adds "incorrect" class to span in index with incorrect key press
             characterSpanArray[counter].classList.add("incorrect")
             blinkyThing()
