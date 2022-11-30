@@ -1,4 +1,4 @@
-// import api and offline json
+// import api
 const random_quote_api_url = 'https://api.quotable.io/random'
 
 // grabs element id's and assigns them to a variable
@@ -178,16 +178,30 @@ function displayResults() {
     //   });
 }
 
+// handles blinker logic, if the user tries to delete from index 1 to index 0 or tries to backspace from index 0, the script will check for a TypeError and replace index 1 with a left border blink
 function blinkyThing(counterPositionModifier = 0) {
-    characterSpanArray.forEach((span) => {
-        // span.style.borderRight = "0px"
-        // span.style.borderLeft = "0px"
-        span.classList.remove("blinking")
-        span.classList.remove("firstBlinking")
-    })
+    try {
+        characterSpanArray.forEach((span) => {
+            // span.style.borderRight = "0px"
+            // span.style.borderLeft = "0px"
+            span.classList.remove("blinking")
+            span.classList.remove("firstBlinking")
+        })
 
-    // characterSpanArray[counter + numberCounter].style.borderRight = "1px solid #ccccb5"
-    characterSpanArray[counter + counterPositionModifier].classList.add("blinking") 
+        // characterSpanArray[counter + numberCounter].style.borderRight = "1px solid #ccccb5"
+        characterSpanArray[counter + counterPositionModifier].classList.add("blinking") 
+    }
+
+    catch (err) {
+            if (err instanceof TypeError) {
+            characterSpanArray.forEach((span) => {
+            span.classList.remove("blinking")
+            span.classList.remove("firstBlinking")
+            })
+
+        characterSpanArray[0].classList.add("firstBlinking") 
+        }
+    }
 }
 
 // resets session
