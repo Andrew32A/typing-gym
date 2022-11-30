@@ -80,6 +80,24 @@ document.addEventListener("keydown", (e) => {
         }
 ```
 
+If the api doesn't load for whatever reason, I added an local json file containing quotes that the script then loads data from.
+
+```javascript
+function offlineQuotes() {
+    offlineIndex = Math.floor(Math.random() * 2000)
+    console.log(offlineIndex)
+
+    return fetch('./data.json')
+    .then(response => {
+        return response.json()
+    })
+    .then(data => {
+        return data[offlineIndex].content
+    })
+    .catch(error => console.log(error));
+}
+```
+
 # What I've learned:
 Although this project seems pretty straightforward, there were a bunch of issues early in development. Firstly, there was no "isAlpha" function in JavaScript so I had to
 make my own: 
@@ -93,7 +111,33 @@ const isAlpha = function(ch) {
 Also, one of the biggest hurdles was the blinking cursor logic which signaled the user where their cursor was positioned. I ended up doing something similar to the
 "correct" and "incorrect" class names and assigning the correct span index with a "blinking" tag which had some keyframes and border styling attached to it. When the user would type or the timer hits zero, a function would erase all "blinking" class tags from all span elements
 then reassign the correct span with "blinking". This was especially tricky when the user would hit "backspace" so we had to add an argument which would inverse the array position selector to hit the span before the current index.
-Huge props to these amazing folks who helped me out with this: <br> <br>
+
+However, the cursor logic would break whenever the user would go from index 1 to index 0. I found this really handy thing called try, catch, and finally which checks for a TypeError and corrects the behavior by binding index 0 with the left border keyframe animations.
+
+```javascript
+function blinkyThing(counterPositionModifier = 0) {
+    try {
+        characterSpanArray.forEach((span) => {
+            span.classList.remove("blinking")
+            span.classList.remove("firstBlinking")
+        })
+        characterSpanArray[counter + counterPositionModifier].classList.add("blinking") 
+    }
+
+    catch (err) {
+            if (err instanceof TypeError) {
+            characterSpanArray.forEach((span) => {
+            span.classList.remove("blinking")
+            span.classList.remove("firstBlinking")
+            })
+        characterSpanArray[0].classList.add("firstBlinking") 
+        }
+    }
+}
+```
+
+# Credit:
+Huge props to these amazing folks who helped me out with this project throughout its development!!: <br> <br>
 https://github.com/alexcrocha <br>
 https://github.com/Babaganouche622 <br>
 https://github.com/EvilGenius13 <br>
