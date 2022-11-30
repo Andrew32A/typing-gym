@@ -1,4 +1,4 @@
-// import api
+// import api and offline json
 const random_quote_api_url = 'https://api.quotable.io/random'
 
 // grabs element id's and assigns them to a variable
@@ -22,8 +22,24 @@ let timeLeft = 30
 let isTimerStarted = true
 let timerInterval // allows interval to be seen by other functions
 let allowTyping = true
+let offlineIndex // random quote from offline json index
 
-// fetches quote from api
+// grabs quote from json incase the api is offline
+function offlineQuotes() {
+    offlineIndex = Math.floor(Math.random() * 2000)
+    console.log(offlineIndex)
+
+    return fetch('./data.json')
+    .then(response => {
+        return response.json()
+    })
+    .then(data => {
+        return data[offlineIndex].content
+    })
+    .catch(error => console.log(error));
+}
+
+// fetches quote from api, huge props to https://github.com/jennifercarreno for helping me w/ .catch and new Error
 function getQuote() {
     return fetch(random_quote_api_url)
     .then((response) => {
@@ -32,7 +48,7 @@ function getQuote() {
             return response.json()
         }
         else {
-            throw new Error('Something went wrong')
+            throw new Error('Something went wrong with api, swapping to offline quotes')
         }
     })
     
@@ -43,9 +59,9 @@ function getQuote() {
 
     .catch((error) => {
         console.log(error)
-        return "the api is down currently, but here's some example text to demo my project"
+        return offlineQuotes()
     })
-} 
+}
 
 // recieves quote from getQuote, splits it into an array, and displays each in its own span tag
 async function getNextQuote() {
