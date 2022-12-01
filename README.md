@@ -125,10 +125,10 @@ function blinkyThing(counterPositionModifier = 0) {
     }
 
     catch (err) {
-            if (err instanceof TypeError) {
+        if (err instanceof TypeError) {
             characterSpanArray.forEach((span) => {
-            span.classList.remove("blinking")
-            span.classList.remove("firstBlinking")
+                span.classList.remove("blinking")
+                span.classList.remove("firstBlinking")
             })
         characterSpanArray[0].classList.add("firstBlinking") 
         }
