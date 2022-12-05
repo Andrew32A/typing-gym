@@ -2,6 +2,8 @@
 For anybody who wants to improve their typing skills without the ad bloat! Typing Gym helps them improve their WPM and speed while typing. I made this project because I was fed up with the ads and cookies on popular typing tests.
 This was also a great way for me to practice JavaScript and apply some of the knowledge I've gained these last few weeks while using various frameworks and api integration.
 
+[Click here to try it out!](andrew32a.github.io/typing_gym/)
+
 # How it works:
 On page load, my script grabs a randomly generated quote from https://api.quotable.io and splits the string up into individual spans.
 
