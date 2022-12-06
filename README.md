@@ -1,5 +1,5 @@
 # Typing Gym:
-For anybody who wants to improve their typing skills without the ad bloat! Typing Gym helps them improve their WPM and speed while typing. I made this project because I was fed up with the ads and cookies on popular typing tests.
+For anybody who wants to improve their typing skills without the ad bloat! Typing Gym helps them improve their WPM and accuracy while typing. I made this project because I was fed up with the ads and cookies on popular typing tests.
 This was also a great way for me to practice JavaScript and apply some of the knowledge I've gained these last few weeks while using various frameworks and api integration.
 
 <h2 align="center"><a href="https://andrew32a.github.io/typing_gym/">Click here to try it out!</a></h3>
