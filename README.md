@@ -4,6 +4,8 @@ This was also a great way for me to practice JavaScript and apply some of the kn
 
 [Click here to try it out!](https://andrew32a.github.io/typing_gym/)
 
+<img src="https://github.com/Andrew32A/typing_gym/blob/main/icons/readme_screenshot.png" align="center">
+
 # How it works:
 On page load, my script grabs a randomly generated quote from https://api.quotable.io and splits the string up into individual spans.
 
