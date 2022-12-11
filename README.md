@@ -84,7 +84,7 @@ document.addEventListener("keydown", (e) => {
         }
 ```
 
-If the api doesn't load for whatever reason, I added an local json file containing quotes that the script then loads data from.
+If the api doesn't load for whatever reason, I added a local json file containing quotes that the script then loads data from.
 
 ```javascript
 function offlineQuotes() {
