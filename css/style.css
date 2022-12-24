@@ -1,5 +1,4 @@
 /* color palette
-
     --bg-color: #1b2028;
     --main-color: #23a9d5;
     --caret-color: #4b5975;
@@ -10,8 +9,6 @@
     --error-extra-color: #84131f;
     --colorful-error-color: #b81b2c;
     --colorful-error-extra-color: #84131f;
-
-
 */
 
 @keyframes transitionIn {
@@ -97,7 +94,7 @@ body {
 }
 
 p {
-  max-width: 500px;
+  max-width: 600px;
   font-family: "Avenir", "arial";
   line-height: 25px;
   text-align: justify;
