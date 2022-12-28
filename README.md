@@ -86,7 +86,7 @@ document.addEventListener("keydown", (e) => {
 
 If the api doesn't load for whatever reason, I added a local json file containing quotes that the script then loads data from.
 
-```javascript
+``` javascript
 function offlineQuotes() {
     offlineIndex = Math.floor(Math.random() * 2000)
     console.log(offlineIndex)
@@ -118,7 +118,7 @@ then reassign the correct span with "blinking". This was especially tricky when 
 
 However, the cursor logic would break whenever the user would go from index 1 to index 0. I found this really handy thing called try, catch, and finally which checks for a TypeError and corrects the behavior by binding index 0 with the left border keyframe animations.
 
-```javascript
+``` javascript
 function blinkyThing(counterPositionModifier = 0) {
     try {
         characterSpanArray.forEach((span) => {
