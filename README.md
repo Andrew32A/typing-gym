@@ -9,7 +9,7 @@ This was also a great way for me to practice JavaScript and apply some of the kn
 # How it works:
 On page load, my script grabs a randomly generated quote from https://api.quotable.io and splits the string up into individual spans.
 
-``` javascript
+```javascript
 const random_quote_api_url = 'https://api.quotable.io/random'
 
 // fetches quote from api
@@ -38,7 +38,7 @@ async function getNextQuote() {
 When the user types, the script will assign either a "correct" or "incorrect" class name onto the proper span element in the array. These two tags mostly just handle the
 styling, but the scoring is also handled next to the class reassignment inside of the event listener's conditionals.
 
-``` javascript
+```javascript
 document.addEventListener("keydown", (e) => {
     let keyStroke = e.key
     let code = e.code
@@ -86,7 +86,7 @@ document.addEventListener("keydown", (e) => {
 
 If the api doesn't load for whatever reason, I added a local json file containing quotes that the script then loads data from.
 
-``` javascript
+```javascript
 function offlineQuotes() {
     offlineIndex = Math.floor(Math.random() * 2000)
     console.log(offlineIndex)
@@ -106,7 +106,7 @@ function offlineQuotes() {
 Although this project seems pretty straightforward, there were a bunch of issues early in development. Firstly, there was no "isAlpha" function in JavaScript so I had to
 make my own: 
 
-``` javascript 
+```javascript 
 const isAlpha = function(ch) {
     return typeof ch === "string" && ch.length === 1 && (ch >= "a" && ch <= "z" || ch >= "A" && ch <= "Z");
 }
