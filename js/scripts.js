@@ -229,6 +229,7 @@ function resetLoop() {
     wpmDisplay.innerHTML = "--" // removes last wpm display to avoid confusion for the user
     allowTyping = true
     mistakes() // may need to move this later, put this here to reset mistakes display counter right away
+    menuParent.addEventListener("click", menuToggle) // allows user to change timer
 }
 
 // main loop which also grabs get user input
@@ -241,6 +242,7 @@ document.addEventListener("keydown", (e) => {
         if (isTimerStarted === true) {
             timerInterval = setInterval(timer, 1000)
             isTimerStarted = false
+            menuParent.removeEventListener("click", menuToggle) // prevents user from changing timer
         }
 
         // change color to green for correct
@@ -300,12 +302,12 @@ document.addEventListener("keydown", (e) => {
 getNextQuote()
 
 // *********************************************************************
-// code for timer menu and behavior
+// code for timer menu and behavior from my boilerplate: https://github.com/Andrew32A/minimalist-pop-out-menu
 
 // helper function to calculate width based on num of items
 function widthCalculator() {
     // takes length of array, adds 1 for menuParent, then times it by 73px which was from the original value (365px / 5)
-    let width = `${((itemArray.length + 1) * 73)}px`
+    let width = `${((itemArray.length + 1) * 63)}px`
     return width
 }
 
@@ -321,7 +323,7 @@ function openMenu() {
     for (let i = 0; i < itemArray.length; i++) {
         anime ({
             targets: itemArray[i],
-            translateX: (60 * (i + 1)),
+            translateX: (50 * (i + 1)),
             opacity: 2,
             easing: "easeInOutQuad"
             // i really wanted to use stagger to handle each item element, but it's only available on the latest version of anime.js which i couldn't get to work right now
