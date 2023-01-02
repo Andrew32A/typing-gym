@@ -373,10 +373,12 @@ function menuChange(item) {
     for (i = 0; i < itemArray.length; i++) {
         if (item.id === itemArray[i].id) {
             timeTotal = itemArray[i].innerText
+            timeLeft = timeTotal
             menuParent.innerText = itemArray[i].innerText
         }
     }
     
     menuCounter++
     closeMenu()
+    // return timeTotal
 }
