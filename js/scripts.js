@@ -297,6 +297,8 @@ document.addEventListener("keydown", (e) => {
 // starts loop
 getNextQuote()
 
+// *********************************************************************
+// code for timer menu and behavior
 
 // helper function to calculate width based on num of items
 function widthCalculator() {
