@@ -314,8 +314,8 @@ getNextQuote()
 
 // helper function to calculate width based on num of items
 function widthCalculator() {
-    // takes length of array, adds 1 for menuParent, then times it by 73px which was from the original value (365px / 5)
-    let width = `${((itemArray.length + 1) * 63)}px`
+    // takes length of array, adds 1 for menuParent, then times it by 65px which was from the original value (325px / 5)
+    let width = `${((itemArray.length + 1) * 65)}px`
     return width
 }
 
