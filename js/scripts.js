@@ -230,6 +230,7 @@ function resetLoop() {
     allowTyping = true
     mistakes() // may need to move this later, put this here to reset mistakes display counter right away
     menuParent.addEventListener("click", menuToggle) // allows user to change timer
+    menuParent.style.pointerEvents = "auto"
 }
 
 // main loop which also grabs get user input
@@ -243,6 +244,7 @@ document.addEventListener("keydown", (e) => {
             timerInterval = setInterval(timer, 1000)
             isTimerStarted = false
             menuParent.removeEventListener("click", menuToggle) // prevents user from changing timer
+            menuParent.style.pointerEvents = "none"
         }
 
         // change color to green for correct
