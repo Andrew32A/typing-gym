@@ -245,6 +245,11 @@ document.addEventListener("keydown", (e) => {
             isTimerStarted = false
             menuParent.removeEventListener("click", menuToggle) // prevents user from changing timer
             menuParent.style.pointerEvents = "none" // disables user hover effects over timer
+            // checks if timer menu is open, if it is open then this conditional will close it
+            if (menuCounter % 2 != 0) {
+                menuCounter++
+                closeMenu()
+            }
         }
 
         // change color to green for correct
