@@ -303,6 +303,7 @@ document.addEventListener("keydown", (e) => {
 // starts loop
 getNextQuote()
 
+
 // *********************************************************************
 // code for timer menu and behavior from my boilerplate: https://github.com/Andrew32A/minimalist-pop-out-menu
 

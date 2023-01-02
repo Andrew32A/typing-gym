@@ -122,13 +122,6 @@ p {
   justify-content: flex-start;
 }
 
-/* .resetWrapper {
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  padding: 0px;
-} */
-
 .reset {
   display: flex;
   justify-content: center;
@@ -154,7 +147,6 @@ p {
   display: flex;
   animation: transitionOut 1s;
   animation-fill-mode: forwards;
-  /* display: none; */
 }
 
 .resultsDisplay {
@@ -182,12 +174,6 @@ p {
 #charactersDisplay {
   color: #23a9d5;
 }
-
-/* body {
-  padding-top: 60px;
-  margin-top: 30px;
-  overflow: hidden;
-} */
 
 @keyframes blink {
   from {
@@ -232,8 +218,6 @@ p {
 #menu {
   display: flex;
   align-items: center;
-
-  /* max-width: 600px; */
   /* might need to change width sizing later */
   width: 125px;
   font-family: "Avenir", "arial";
@@ -243,7 +227,6 @@ p {
   font-size: 1em;
   font-variant: no-common-ligatures;
   font-size: 20px;
-  /* padding: 0.5em; */
   padding: 10px 20px 10px;
   border: 0;
   margin: 0;
@@ -255,11 +238,8 @@ p {
 #timeDisplay {
   padding: 0;
   margin: 0;
-
   border-left: 10px;
   color: #23a9d5;
-
-  /* border-radius: 10px; */
   height: 25px;
   width: 27px;
   cursor: pointer;
