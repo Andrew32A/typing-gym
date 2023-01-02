@@ -10,6 +10,7 @@ const resultsDisplay = document.getElementById("results")
 const accuracyDisplay = document.getElementById("accuracyDisplay")
 const charactersDisplay = document.getElementById("charactersDisplay")
 
+// grabs elements for timer menu
 const menuParent = document.querySelector(".menuParent")
 const itemArray = document.querySelectorAll(".item") // item is an array when getting it by query selector all
 
@@ -26,8 +27,9 @@ let timerInterval // allows interval to be seen by other functions
 let allowTyping = true
 let offlineIndex // random quote from offline json index
 
+// init variables for timer menu
 let timeTotal = 30
-let timeLeft = 30
+let timeLeft = timeTotal
 let menuCounter = 0
 
 // grabs quote from json incase the api is offline
@@ -124,7 +126,7 @@ function timer() {
 
 // calculates wpm by dividing the number of characters typed by 5 (standard for calculating size of words) then divided again by elapsed time in minutes
 function wpmCounter() {
-    let wpm = Math.round((totalCounter / 5) / (((timeLeft - 30) * (-1) / 60)))
+    let wpm = Math.round((totalCounter / 5) / (((timeLeft - timeTotal) * (-1) / 60)))
     wpmDisplay.innerHTML = wpm
 }
 
@@ -214,7 +216,7 @@ function resetLoop() {
     isTimerStarted = true
     characterSpanArray = []
     getNextQuote()
-    timeLeft = 30
+    timeLeft = timeTotal
     timeDisplay.innerText = timeLeft
     counter = 0
     totalCounter = 0
@@ -370,7 +372,8 @@ function menuChange(item) {
     console.log(item)
     for (i = 0; i < itemArray.length; i++) {
         if (item.id === itemArray[i].id) {
-            menuParent.innerHTML = itemArray[i].innerHTML
+            timeTotal = itemArray[i].innerText
+            menuParent.innerText = itemArray[i].innerText
         }
     }
     
