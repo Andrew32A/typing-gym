@@ -116,24 +116,11 @@ p {
   text-decoration: underline;
 }
 
-#timeDisplay {
-  padding-bottom: 0;
-  margin: 0;
-  color: #23a9d5;
-}
-
 .info {
   border-top: #4b5975 solid 1px;
   display: flex;
   justify-content: flex-start;
 }
-
-/* .resetWrapper {
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  padding: 0px;
-} */
 
 .reset {
   display: flex;
@@ -160,7 +147,6 @@ p {
   display: flex;
   animation: transitionOut 1s;
   animation-fill-mode: forwards;
-  /* display: none; */
 }
 
 .resultsDisplay {
@@ -188,12 +174,6 @@ p {
 #charactersDisplay {
   color: #23a9d5;
 }
-
-/* body {
-  padding-top: 60px;
-  margin-top: 30px;
-  overflow: hidden;
-} */
 
 @keyframes blink {
   from {
@@ -229,3 +209,56 @@ p {
   animation-iteration-count: infinite;
 }
 
+#quoteDisplay {
+  margin-top: 10px; /* this is to adjust the spacing between quote display and timer for the timer's padding */
+}
+
+/* ******************************************* */
+/* styles for timer menu */
+#menu {
+  display: flex;
+  align-items: center;
+  /* might need to change width sizing later */
+  width: 125px;
+  font-family: "Avenir", "arial";
+  line-height: 25px;
+  text-align: justify;
+  font-weight: 400;
+  font-size: 1em;
+  font-variant: no-common-ligatures;
+  font-size: 20px;
+  padding: 10px 20px 10px;
+  border: 0;
+  margin: 0;
+  border-radius: 10px;
+  cursor: default;
+  white-space: nowrap;
+}
+
+#timeDisplay {
+  padding: 0;
+  margin: 0;
+  border-left: 10px;
+  color: #23a9d5;
+  height: 25px;
+  width: 27px;
+  cursor: pointer;
+}
+
+#timeDisplay:hover {
+  color: #ccccb5;
+}
+
+.item {
+  padding-bottom: 0;
+  margin: 0;
+  color: #4b5975;
+  /* border-radius: 10px; */
+  opacity: -2; /* had to set opacity to -1 to avoid weird stutter from bounceback effect in anime.js */
+  list-style: none;
+}
+
+.item:hover {
+  color: #ccccb5;
+  cursor: pointer;
+}
