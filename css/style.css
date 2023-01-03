@@ -256,6 +256,7 @@ p {
   /* border-radius: 10px; */
   opacity: -2; /* had to set opacity to -1 to avoid weird stutter from bounceback effect in anime.js */
   list-style: none;
+  visibility: hidden;
 }
 
 .item:hover {
