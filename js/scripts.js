@@ -1,5 +1,5 @@
 // import api
-const random_quote_api_url = 'https://api.quotable.io/random?maxLength=125'
+const random_quote_api_url = 'https://api.quotable.io/random?minLength=45&maxLength=125'
 
 // grabs element id's and assigns them to a variable
 const quoteDisplay = document.getElementById("quoteDisplay")
