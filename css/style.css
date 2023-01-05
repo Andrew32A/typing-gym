@@ -147,11 +147,13 @@ p {
   display: flex;
   animation: transitionOut 1s;
   animation-fill-mode: forwards;
+  visibility: hidden;
 }
 
 .resultsDisplay {
   display: flex;
   animation: transitionIn 1s;
+  visibility: visible;
 }
 
 /* adds color to wpm number when session is finished */
