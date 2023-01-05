@@ -31,6 +31,7 @@
 
   to {
       display: none;
+      visibility: hidden;
       opacity: 0;
       transform: translateY(-100px) scale3d(0);
   }
@@ -147,7 +148,6 @@ p {
   display: flex;
   animation: transitionOut 1s;
   animation-fill-mode: forwards;
-  visibility: hidden;
 }
 
 .resultsDisplay {
